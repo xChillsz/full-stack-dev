@@ -14,6 +14,7 @@ router
 
 router
     .route('/trips/:tripCode')
-    .get(tripsController.tripsFindCode);
+    .get(tripsController.tripsFindCode)
+    .put(tripsController.tripsUpdateTrip);
 
 module.exports = router; 
