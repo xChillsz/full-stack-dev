@@ -4,6 +4,10 @@ const router = express.Router();
 const tripsController = require('../controllers/trips');
 
 router
+    .route('/')
+    .get(tripsController.tripsList);
+
+router
     .route('/trips')
     .get(tripsController.tripsList);
 
