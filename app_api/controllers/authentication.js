@@ -18,7 +18,7 @@ const register = (req, res) => {
                 .status(400)
                 .json(err);
         } else {
-            const token = user.generateJwt;
+            const token = user.generateJwt();
             res
                 .status(200)
                 .json({ token });
