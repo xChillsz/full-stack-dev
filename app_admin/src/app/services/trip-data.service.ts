@@ -1,6 +1,5 @@
 import { Injectable, Inject } from '@angular/core';
-import { Http } from '@angular/http';
-
+import { Http, Headers } from '@angular/http';
 import { Trip } from  '../models/trip';
 import { d } from '@angular/core/src/render3';
 import { User } from '../models/user';
@@ -35,9 +34,16 @@ export class TripDataService {
   }
 
   public addTrip(formData: Trip): Promise<Trip> {
+
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', `Bearer ${this.storage.getItem('travlr-token')}`);
+
+    // Configure HTTP request options
+    const requestOptions = { headers: headers };
     console.log('Inside TripDataService#addTrip')
     return this.http
-    .post(this.tripUrl, formData)
+    .post(this.tripUrl, formData, requestOptions)
     .toPromise()
     .then(response => response.json() as Trip[])
     .catch(this.handleError);

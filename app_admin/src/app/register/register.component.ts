@@ -39,5 +39,6 @@ export class RegisterComponent implements OnInit {
       .then(() => this.router.navigateByUrl('#'))
       .catch((message) => this.formError = message);
   }
+  
 }
 
